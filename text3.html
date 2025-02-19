@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hero Section Animation</title>
+    <link rel="stylesheet" href="styles.css" />
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+      /* Basic Reset */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+      }
+
+      .hero-section {
+        position: relative;
+        height: 100vh;
+        background-color: #333;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .hero-content {
+        text-align: center;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+      }
+
+      .hero-title {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero-description {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: auto;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      /* Hover effects */
+      .hero-section:hover .hero-content {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .hero-section:hover .hero-image {
+        opacity: 1;
+      }
+
+      .hero-section:hover {
+        background-color: #222;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero-section">
+      <img src="demo/images/1.jpeg" alt="Hero Image" class="hero-image" />
+
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to Our Website</h1>
+        <p class="hero-description">Discover amazing content and insights.</p>
+      </div>
+
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        // Optional: Add animation on hover using jQuery for more control
+        $(".hero-section").hover(
+          function () {
+            // Mouse enter
+            $(this).find(".hero-content").css({
+              opacity: "1",
+              transform: "translateY(0)",
+            });
+            $(this).find(".hero-image").css("opacity", "1");
+          },
+          function () {
+            // Mouse leave
+            $(this).find(".hero-content").css({
+              opacity: "0",
+              transform: "translateY(30px)",
+            });
+            $(this).find(".hero-image").css("opacity", "0");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
